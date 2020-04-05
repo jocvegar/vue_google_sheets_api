@@ -5,6 +5,9 @@
       {{  new Date() | moment("llll") }}
     </div>
     <Api />
+    <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/uqlpfWJ">
+      <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee">
+    </a>
   </div>
 </template>
 
