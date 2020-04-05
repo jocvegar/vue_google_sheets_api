@@ -1,25 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img alt="Vue logo" src="./assets/covid-19.png">
+    <div class="date">
+      {{  new Date() | moment("llll") }}
+    </div>
     <Api />
-    <Chart />
   </div>
 </template>
 
 <script>
 import Api from './components/Api.vue'
-import Chart from './components/Chart.vue'
 
 export default {
   name: 'App',
   components: {
     Api,
-    Chart
-  }
+  },
 }
 </script>
 
 <style lang="scss">
+html {
+  background: rgba(224, 224, 224, 0.2);
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -27,5 +30,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.date {
+  padding-top: 4rem;
 }
 </style>
