@@ -7,6 +7,7 @@
             <div v-if="loading">Loading...</div>
             <div v-else>
                 <div class="chart-container">
+                    {{chartdata_bar_data_by_day}}
                     <line-chart  
                         :chartdata_labels="chartdata_labels"
                         :chartdata_data="chartdata_data" />
@@ -18,6 +19,11 @@
                         :chartdata_pie_data_better="chartdata_pie_data_better" />    
                     <br>
                     <br> 
+                     <bar-chart  
+                        :chartdata_labels="chartdata_labels"
+                        :chartdata_bar_data_by_day="chartdata_bar_data_by_day" />
+                    <br>
+                    <br>
                     <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/uqlpfWJ">
                         <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee">
                     </a>
@@ -31,11 +37,12 @@
 import axios from 'axios';
 import LineChart from './LineChart.vue'
 import PieChart from './PieChart.vue'
+import BarChart from './BarChart.vue'
 import moment from 'moment'
 moment.locale('es');
 
 export default {
-    components: { LineChart, PieChart },
+    components: { LineChart, PieChart, BarChart },
     data() {
         return {
             chartdata_labels: null,
@@ -43,6 +50,7 @@ export default {
             chartdata_pie_data_healed: null,
             chartdata_pie_data_deceased: null,
             chartdata_pie_data_better: null,
+            chartdata_bar_data_by_day: null,
             loading: true,
             errored: false,
         }
@@ -56,6 +64,7 @@ export default {
               this.chartdata_pie_data_healed = response.data.cases.map(x => x.healed).filter(function(e){return e})
               this.chartdata_pie_data_deceased = response.data.cases.map(x => x.deceased).filter(function(e){return e})
               this.chartdata_pie_data_better = response.data.cases.map(x => x.better).filter(function(e){return e})
+              this.chartdata_bar_data_by_day = response.data.cases.map(x => x.cases_by_day)
             })
             .catch(error => {
                 console.log(error)
