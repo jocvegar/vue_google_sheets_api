@@ -20,7 +20,10 @@ export default {
         let map = am4core.create(this.$refs.chartdiv, am4maps.MapChart);
         map.geodata = am4geodata_hondurasLow;
         map.projection = new am4maps.projections.Miller();
-
+        map.seriesContainer.draggable = false;
+        map.seriesContainer.resizable = false;
+        map.maxZoomLevel = 1;
+        
         let polygonSeries = new am4maps.MapPolygonSeries();
         polygonSeries.useGeodata = true;
         map.series.push(polygonSeries);

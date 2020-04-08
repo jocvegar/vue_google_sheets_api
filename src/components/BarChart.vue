@@ -20,7 +20,7 @@ export default {
                 datasets: [
                     {   
                         label: "Casos Por Evento",
-                        backgroundColor: 'rgba(255, 145, 113, 0.2)',
+                        backgroundColor: 'rgba(255, 145, 113, 0.5)',
                         borderColor: 'rgb(255, 145, 113)',
                         data: this.chartdata_bar_data_by_day,
                         borderWidth: 1,
