@@ -4,10 +4,13 @@
             <p>No lo pude load! Try again later</p>
         </section>
         <section v-else>
-            <div v-if="loading">Loading...</div>
+            <div v-if="loading" class="loading-container">Loading...</div>
             <div v-else>
                 <div class="chart-container">
-                    {{chartdata_bar_data_by_day}}
+                     <department-map 
+                        :by_department="by_department" />
+                    <br>
+                    <br>
                     <line-chart  
                         :chartdata_labels="chartdata_labels"
                         :chartdata_data="chartdata_data" />
@@ -38,11 +41,12 @@ import axios from 'axios';
 import LineChart from './LineChart.vue'
 import PieChart from './PieChart.vue'
 import BarChart from './BarChart.vue'
+import DepartmentMap from './DepartmentMap.vue'
 import moment from 'moment'
 moment.locale('es');
 
 export default {
-    components: { LineChart, PieChart, BarChart },
+    components: { LineChart, PieChart, BarChart, DepartmentMap },
     data() {
         return {
             chartdata_labels: null,
@@ -53,18 +57,21 @@ export default {
             chartdata_bar_data_by_day: null,
             loading: true,
             errored: false,
+            by_department: null,
         }
     },
     async mounted() {
         axios
             .get(process.env.VUE_APP_API_LINK)
             .then(response => {
-              this.chartdata_labels = response.data.cases.map(x => moment(x.date).format('DD [de] MMM'))     
-              this.chartdata_data = response.data.cases.map(x => x.cases)     
-              this.chartdata_pie_data_healed = response.data.cases.map(x => x.healed).filter(function(e){return e})
-              this.chartdata_pie_data_deceased = response.data.cases.map(x => x.deceased).filter(function(e){return e})
-              this.chartdata_pie_data_better = response.data.cases.map(x => x.better).filter(function(e){return e})
-              this.chartdata_bar_data_by_day = response.data.cases.map(x => x.cases_by_day)
+                this.response = response
+                this.chartdata_labels = response.data.cases.map(x => moment(x.date).format('DD [de] MMM'))     
+                this.chartdata_data = response.data.cases.map(x => x.cases)     
+                this.chartdata_pie_data_healed = response.data.cases.map(x => x.healed).filter(function(e){return e})
+                this.chartdata_pie_data_deceased = response.data.cases.map(x => x.deceased).filter(function(e){return e})
+                this.chartdata_pie_data_better = response.data.cases.map(x => x.better).filter(function(e){return e})
+                this.chartdata_bar_data_by_day = response.data.cases.map(x => x.cases_by_day)
+                this.by_department = response.data.cases[0]
             })
             .catch(error => {
                 console.log(error)
@@ -80,5 +87,9 @@ export default {
     margin: auto;
     height: 50vh;
     width: 90vw;
+}
+.loading-container {
+    padding-top:4rem;
+    padding-bottom:4rem;
 }
 </style>

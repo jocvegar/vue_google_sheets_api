@@ -32,6 +32,7 @@ html {
   margin-top: 60px;
 }
 .date {
-  padding-top: 4rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 </style>
