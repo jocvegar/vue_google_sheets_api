@@ -89,7 +89,6 @@ export default {
     width: 90vw;
 }
 .loading-container {
-    padding-top:4rem;
-    padding-bottom:4rem;
+    padding:2rem 0;
 }
 </style>

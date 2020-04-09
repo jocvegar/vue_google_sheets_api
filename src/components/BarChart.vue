@@ -19,7 +19,7 @@ export default {
                 labels: this.chartdata_labels,
                 datasets: [
                     {   
-                        label: "Casos Por Evento",
+                        label: "Casos por día reportado",
                         backgroundColor: 'rgba(255, 145, 113, 0.5)',
                         borderColor: 'rgb(255, 145, 113)',
                         data: this.chartdata_bar_data_by_day,

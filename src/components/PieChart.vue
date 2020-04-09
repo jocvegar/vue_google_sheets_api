@@ -23,7 +23,7 @@ export default {
                 labels: [
 					'curados',
 					'fallecidos',
-					'por curase',
+					'por curarse',
                 ],
                 datasets: [
                     {
