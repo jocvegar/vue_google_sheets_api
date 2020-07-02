@@ -4,10 +4,14 @@
             <p>No lo pude load! Try again later</p>
         </section>
         <section v-else>
-            <div v-if="loading" class="loading-container">Loading...</div>
+            <div v-if="loading" class="loading-container">Conectándome a la base de batos...</div>
             <div v-else>
                 <div class="chart-container">
                      <department-map 
+                        :by_department="by_department" />
+                    <br>
+                    <br>
+                    <cases-by-department
                         :by_department="by_department" />
                     <br>
                     <br>
@@ -42,11 +46,12 @@ import LineChart from './LineChart.vue'
 import PieChart from './PieChart.vue'
 import BarChart from './BarChart.vue'
 import DepartmentMap from './DepartmentMap.vue'
+import CasesByDepartment from './CasesByDepartment.vue'
 import moment from 'moment'
 moment.locale('es');
 
 export default {
-    components: { LineChart, PieChart, BarChart, DepartmentMap },
+    components: { LineChart, PieChart, BarChart, DepartmentMap, CasesByDepartment },
     data() {
         return {
             chartdata_labels: null,
@@ -85,7 +90,7 @@ export default {
 <style>
 .chart-container {
     margin: auto;
-    height: 50vh;
+    height: 60vh;
     width: 90vw;
 }
 .loading-container {
