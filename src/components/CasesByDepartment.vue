@@ -33,14 +33,15 @@ export default {
         categoryAxis.renderer.labels.template.horizontalCenter = "right";
         categoryAxis.renderer.labels.template.verticalCenter = "middle";
         categoryAxis.renderer.labels.template.rotation = 270;
-        categoryAxis.renderer.minGridDistance = 10;
-        categoryAxis.fontSize = 10;
+        categoryAxis.renderer.minGridDistance = 5;
+        categoryAxis.fontSize = 12;
 
         let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         valueAxis.min = 0;
         valueAxis.max = 10000;
         valueAxis.strictMinMax = true;
         valueAxis.renderer.minGridDistance = 20;
+        valueAxis.renderer.labels.template.fontSize = 12;
 
         let axisBreak = valueAxis.axisBreaks.create();
         axisBreak.startValue = 700;
@@ -68,6 +69,8 @@ export default {
         series.columns.template.adapter.add("fill", function(fill, target) {
             return chart.colors.getIndex(target.dataItem.index);
         });
+
+        categoryAxis.sortBySeries = series;
 
         chart.data = [
             {
