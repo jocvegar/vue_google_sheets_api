@@ -38,14 +38,14 @@ export default {
 
         let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         valueAxis.min = 0;
-        valueAxis.max = 10000;
+        valueAxis.max = Math.max(this.by_department["cortes"], this.by_department["fm"]) + 500;
         valueAxis.strictMinMax = true;
         valueAxis.renderer.minGridDistance = 20;
         valueAxis.renderer.labels.template.fontSize = 12;
 
         let axisBreak = valueAxis.axisBreaks.create();
-        axisBreak.startValue = 700;
-        axisBreak.endValue = 9000;
+        axisBreak.startValue = 1000;
+        axisBreak.endValue = 10000;
 
         // fixed axis break
         let d = (axisBreak.endValue - axisBreak.startValue) / (valueAxis.max - valueAxis.min);
