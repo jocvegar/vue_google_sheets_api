@@ -23,7 +23,7 @@ export default {
                 labels: [
 					'curados',
 					'fallecidos',
-					'por curarse',
+					'infectados',
                 ],
                 datasets: [
                     {
@@ -48,7 +48,11 @@ export default {
                 },
 				title: {
 					display: true,
-					text: 'Eventos'
+                    text: 
+                        `Total Casos: ${
+                            this.chartdata_pie_data_healed[0] + 
+                            this.chartdata_pie_data_deceased[0] +
+                            this.chartdata_pie_data_better[0] }`
                 },
                 animation: {
                     animateScale: true
