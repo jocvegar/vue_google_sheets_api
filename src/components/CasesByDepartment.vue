@@ -44,8 +44,8 @@ export default {
         valueAxis.renderer.labels.template.fontSize = 12;
 
         let axisBreak = valueAxis.axisBreaks.create();
-        axisBreak.startValue = 1000;
-        axisBreak.endValue = 10000;
+        axisBreak.startValue = 2000;
+        axisBreak.endValue = 11000;
 
         // fixed axis break
         let d = (axisBreak.endValue - axisBreak.startValue) / (valueAxis.max - valueAxis.min);
