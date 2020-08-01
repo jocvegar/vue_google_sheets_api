@@ -2,7 +2,6 @@
 
 # API Fetching Test
 
-## Project setup
 ```
 Made a vue app that fetches from a google spreadsheet
 ```
