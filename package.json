@@ -10,7 +10,7 @@
   "dependencies": {
     "@amcharts/amcharts4": "^4.9.13",
     "@amcharts/amcharts4-geodata": "^4.1.14",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.4",
     "register-service-worker": "^1.7.1",
